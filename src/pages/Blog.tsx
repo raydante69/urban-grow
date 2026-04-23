@@ -22,43 +22,108 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Blog Grid */}
+      {/* Sections Divider/Toggle (Implicit by layout) */}
       <section className="py-24 px-6 md:pb-32">
-        <div className="container-boxed grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-          {siteData.blog.map((post, i) => (
-            <motion.article 
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="glass-card rounded-[32px] overflow-hidden hover:shadow-lux transition-all group flex flex-col h-full"
-            >
-              <div className="h-72 overflow-hidden relative">
-                <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-6 left-6 bg-accent text-heading text-[10px] uppercase font-black tracking-widest px-4 py-1.5 rounded-full shadow-lg">
-                   Education
-                </div>
+        <div className="container-boxed space-y-32">
+          
+          {/* Regular Articles Section */}
+          <div className="space-y-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-display text-heading">Nos Articles</h2>
+                <p className="text-lg text-body max-w-xl">Retrouvez nos derniers conseils pour un potager d'intérieur florissant.</p>
               </div>
-              <div className="p-10 flex-grow flex flex-col justify-between space-y-8">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-body text-xs font-bold uppercase tracking-widest">
-                    <Calendar size={14} className="text-accent" />
-                    <span>{post.date}</span>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              {siteData.blog.map((post, i) => (
+                <motion.article 
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="glass-card rounded-[32px] overflow-hidden hover:shadow-lux transition-all group flex flex-col h-full"
+                >
+                  <Link to={`/blog/${post.id}/`} className="h-72 overflow-hidden relative block">
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute top-6 left-6 bg-accent text-heading text-[10px] uppercase font-black tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                       Education
+                    </div>
+                  </Link>
+                  <div className="p-10 flex-grow flex flex-col justify-between space-y-8">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 text-body text-xs font-bold uppercase tracking-widest">
+                        <Calendar size={14} className="text-accent" />
+                        <span>{post.date}</span>
+                      </div>
+                      <Link to={`/blog/${post.id}/`}>
+                        <h3 className="text-2xl font-display text-heading group-hover:text-accent transition-colors leading-snug">
+                          {post.title}
+                        </h3>
+                      </Link>
+                      <p className="text-body text-base line-clamp-3 leading-relaxed opacity-85">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <Link to={`/blog/${post.id}/`} className="flex items-center gap-2 text-heading font-bold group/btn group-hover:text-accent transition-colors">
+                      Lire l'article <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
-                  <h3 className="text-2xl lg:text-3xl font-display text-heading group-hover:text-accent transition-colors leading-snug">
-                    {post.title}
-                  </h3>
-                  <p className="text-body text-base lg:text-lg line-clamp-3 leading-relaxed opacity-85">
-                    {post.excerpt}
-                  </p>
-                </div>
-                <button className="flex items-center gap-2 text-heading font-bold group/btn group-hover:text-accent transition-colors">
-                  Lire la suite <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+
+          {/* White Papers Section */}
+          <div className="space-y-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-t border-gray-100 pt-32">
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-display text-heading">Livres Blancs</h2>
+                <p className="text-lg text-body max-w-xl">Des guides complets à télécharger pour approfondir vos connaissances pédagogiques.</p>
               </div>
-            </motion.article>
-          ))}
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              {siteData.whitePapers.map((doc, i) => (
+                <motion.article 
+                  key={doc.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="glass-card rounded-[32px] overflow-hidden hover:shadow-lux transition-all group flex flex-col h-full"
+                >
+                  <Link to={`/livres-blancs/${doc.id}/`} className="h-72 overflow-hidden relative block">
+                    <img src={doc.image} alt={doc.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute top-6 left-6 bg-accent text-heading text-[10px] uppercase font-black tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                       Livre Blanc
+                    </div>
+                  </Link>
+                  <div className="p-10 flex-grow flex flex-col justify-between space-y-8">
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 text-body text-xs font-bold uppercase tracking-widest">
+                        <Calendar size={14} className="text-accent" />
+                        <span>{doc.date}</span>
+                      </div>
+                      <Link to={`/livres-blancs/${doc.id}/`}>
+                        <h3 className="text-2xl font-display text-heading group-hover:text-accent transition-colors leading-snug">
+                          {doc.title}
+                        </h3>
+                      </Link>
+                      <p className="text-body text-base line-clamp-3 leading-relaxed opacity-85">
+                        {doc.excerpt}
+                      </p>
+                    </div>
+                    <Link to={`/livres-blancs/${doc.id}/`} className="flex items-center gap-2 text-heading font-bold group/btn group-hover:text-accent transition-colors">
+                      Télécharger le guide <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 

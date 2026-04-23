@@ -15,6 +15,8 @@ import Blog from "./pages/Blog";
 import About from "./pages/About";
 import ProductPage from "./pages/ProductPage";
 import Checkout from "./pages/Checkout";
+import BlogPostDetail from "./pages/BlogPostDetail";
+import WhitePaperDetail from "./pages/WhitePaperDetail";
 
 // CREATE CART CONTEXT
 interface CartItem {
@@ -39,6 +41,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const { cartCount, isCartOpen, setIsCartOpen, cartItems } = useCart();
   const location = useLocation();
 
@@ -53,10 +56,23 @@ function Header() {
   // Close menu on route change
   useEffect(() => {
     setIsOpen(false);
+    setIsSearchOpen(false);
+    setSearchQuery("");
   }, [location.pathname]);
 
   const isSolid = scrolled || isOpen;
   const subtotal = cartItems.reduce((acc, i) => acc + ((i.price || 0) * i.quantity), 0);
+
+  // Search logic
+  const allSearchableItems = [
+    ...siteData.products.map(p => ({ id: p.id, title: p.name, link: `/products/${p.id}/`, category: p.category, image: p.image })),
+    ...siteData.blog.map(b => ({ id: b.id, title: b.title, link: `/blog/${b.id}/`, category: 'Article', image: b.image })),
+    ...siteData.whitePapers.map(w => ({ id: w.id, title: w.title, link: `/livres-blancs/${w.id}/`, category: 'Livre Blanc', image: w.image }))
+  ];
+
+  const searchResults = searchQuery.trim() === "" 
+    ? [] 
+    : allSearchableItems.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <>
@@ -194,10 +210,12 @@ function Header() {
                 <X size={40} />
               </button>
               
-              <div className="w-full max-w-4xl mx-auto space-y-12 pointer-events-auto">
-                 <div className="relative">
+              <div className="w-full max-w-4xl mx-auto space-y-12 pointer-events-auto h-full flex flex-col">
+                 <div className="relative shrink-0">
                     <input 
                       type="text" 
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Qu'allez-vous cultiver aujourd'hui ?" 
                       autoFocus
                       className="w-full bg-transparent border-b-2 border-white/10 py-6 text-3xl md:text-5xl text-white outline-none focus:border-accent transition-colors placeholder:text-white/20 font-display"
@@ -205,28 +223,65 @@ function Header() {
                     <Search className="absolute right-0 top-1/2 -translate-y-1/2 text-white/20" size={40} />
                  </div>
 
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12">
-                    <div className="space-y-6">
-                       <h3 className="text-white/40 uppercase tracking-widest text-xs font-bold">Suggestions</h3>
-                       <div className="space-y-4">
-                          {["Potager connecté", "Basilic Bio", "Terreau fertile", "Ateliers gratuits"].map(s => (
-                            <button key={s} className="block text-white text-xl hover:text-accent transition-colors">
-                               {s}
-                            </button>
-                          ))}
+                 {searchQuery.trim() === "" ? (
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 shrink-0">
+                      <div className="space-y-6">
+                         <h3 className="text-white/40 uppercase tracking-widest text-xs font-bold">Suggestions</h3>
+                         <div className="space-y-4 flex flex-col items-start">
+                            {[
+                              { label: "Potager connecté", link: "/products/potager-d-interieur-connecte-urbangrow/" },
+                              { label: "Basilic Bio", link: "/products/basilic/" },
+                              { label: "Terreau fertile", link: "/collections/terreau/" },
+                              { label: "Livres Blancs", link: "/blog/" }
+                            ].map(s => (
+                              <Link key={s.label} to={s.link} className="block text-white text-xl hover:text-accent transition-colors">
+                                 {s.label}
+                              </Link>
+                            ))}
+                         </div>
+                      </div>
+                      <div className="space-y-6">
+                         <h3 className="text-white/40 uppercase tracking-widest text-xs font-bold">Populaire</h3>
+                         <div className="flex flex-wrap gap-3">
+                            {[
+                              { label: "Graines", link: "/collections/graines/" },
+                              { label: "Kits", link: "/" },
+                              { label: "Blog", link: "/blog/" },
+                            ].map(c => (
+                              <Link key={c.label} to={c.link} className="px-4 py-2 bg-white/5 rounded-full text-white text-sm hover:bg-accent hover:text-heading transition-colors cursor-pointer block">
+                                 {c.label}
+                              </Link>
+                            ))}
+                         </div>
+                      </div>
+                   </div>
+                 ) : (
+                   <div className="flex-1 overflow-y-auto pr-4 scrollbar-hide space-y-4 pb-12">
+                     {searchResults.length > 0 ? (
+                       searchResults.map(result => (
+                         <Link 
+                           key={result.id} 
+                           to={result.link}
+                           className="flex items-center gap-6 p-4 rounded-2xl hover:bg-white/5 transition-colors group"
+                         >
+                           {result.image && (
+                             <div className="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-white/10">
+                               <img src={result.image} alt={result.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                             </div>
+                           )}
+                           <div className="space-y-1">
+                             <h4 className="text-white text-xl md:text-2xl font-display group-hover:text-accent transition-colors">{result.title}</h4>
+                             <p className="text-white/40 text-sm uppercase tracking-widest font-bold">{result.category}</p>
+                           </div>
+                         </Link>
+                       ))
+                     ) : (
+                       <div className="text-center py-20">
+                         <p className="text-white/40 text-2xl font-display">Aucun résultat trouvé pour "{searchQuery}".</p>
                        </div>
-                    </div>
-                    <div className="space-y-6">
-                       <h3 className="text-white/40 uppercase tracking-widest text-xs font-bold">Populaire</h3>
-                       <div className="flex flex-wrap gap-3">
-                          {["Graines", "Kits", "Cadeaux", "Guide PDF"].map(c => (
-                            <span key={c} className="px-4 py-2 bg-white/5 rounded-full text-white text-sm hover:bg-accent transition-colors cursor-pointer">
-                               {c}
-                            </span>
-                          ))}
-                       </div>
-                    </div>
-                 </div>
+                     )}
+                   </div>
+                 )}
               </div>
             </motion.div>
           </>
@@ -429,6 +484,8 @@ export default function App() {
               <Route path="/collections/terreau/" element={<Catalog />} />
               <Route path="/a-propos/" element={<About />} />
               <Route path="/blog/" element={<Blog />} />
+              <Route path="/blog/:id/" element={<BlogPostDetail />} />
+              <Route path="/livres-blancs/:id/" element={<WhitePaperDetail />} />
               <Route path="/contact/" element={<Contact />} />
               <Route path="/checkout/" element={<Checkout />} />
               {/* Fallback to home for demo purposes */}

@@ -1,225 +1,499 @@
-export const siteData = {
-  nav: [
-    { title: "Potager d'intérieur", path: "/products/potager-d-interieur-connecte-urbangrow/" },
-    { title: "Graines", path: "/collections/graines/" },
-    { title: "Terreau", path: "/products/terreau/" },
-    { title: "Contenu Pédagogique", path: "/blog/" },
-    { title: "Espace Pro", path: "/contact/" },
-  ],
-  hero: {
-    title: "Votre potager d'intérieur connecté",
-    subtitle: "Cultivez vos herbes aromatiques facilement grâce à notre kit hydroponique connecté livré à domicile.",
-    cta: "Découvrir le kit",
-    image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-td1k3ztd1k3ztd1k-scaled.png"
-  },
-  infocards: [
-    {
-      id: "01.",
-      title: "Graines bio",
-      description: "Profitez de graines 100% biologiques pour un jardinage durable et responsable chez vous.",
-    },
-    {
-      id: "02.",
-      title: "Livraison gratuite",
-      description: "Recevez votre commande sans frais dès 60€ d'achats pour un shopping facilité.",
-    },
-    {
-      id: "03.",
-      title: "Satisfaction client",
-      description: "Nous sommes fiers d'avoir un taux de satisfaction de 4,8/5 de nos clients heureux.",
-    },
-  ],
-  about: {
-    title: "À propos d'UrbanGrow",
-    description1: "UrbanGrow est la solution idéale pour tous ceux qui souhaitent cultiver leurs propres herbes aromatiques à la maison. Nous offrons des kits de jardinage d'intérieur innovants et éducatifs.",
-    description2: "Notre motivation est de rendre l'agriculture urbaine accessible à tous et de promouvoir un mode de vie éco-conscient.",
-    image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-2jwoy92jwoy92jwo1-scaled.png"
-  },
-  initiatives: {
-    title: "Nos initiatives pour la communauté",
-    subtitle: "Nous nous engageons à soutenir ceux qui en ont besoin grâce à nos différentes initiatives et programmes.",
-    items: [
-      {
-        title: "Ateliers gratuits",
-        description: "Participez à nos ateliers de jardinage urbain gratuits pour apprendre à cultiver vos propres plantes et améliorer votre bien-être.",
-      },
-      {
-        title: "Programmes scolaires",
-        description: "Nous offrons aux écoles des kits éducatifs pour enseigner aux enfants l'importance de l'agriculture durable.",
-      },
-      {
-        title: "Soutien aux familles",
-        description: "Aidez-nous à fournir des kits de jardinage aux familles en difficulté pour renforcer la sécurité alimentaire locale.",
-      },
-    ],
-  },
-  stories: {
-    title: "Histoires inspirantes",
-    subtitle: "Découvrez comment UrbanGrow a transformé la vie de nombreuses personnes à travers nos initiatives.",
-    items: [
-      {
-        title: "Nouvelle vie",
-        description: "Marie, une jeune mère, cherchait un moyen d'apprendre à cultiver des herbes pour sa famille. Grâce à nos kits, elle a découvert le jardinage, et aujourd'hui, elle récolte ses propres plantes.",
-        image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-k4urdmk4urdmk4ur-scaled.png"
-      },
-      {
-        title: "Enseignement durable",
-        description: "L'école de Paul a intégré notre programme d'agriculture urbaine. Les enfants ont appris à cultiver et à comprendre la provenance de leur nourriture, rendant l'apprentissage pratique et engageant.",
-        image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-cw4mf1cw4mf1cw4m1-scaled.png"
-      },
-    ],
-  },
-  finalCta: {
-    title: "Agissez maintenant",
-    subtitle: "Rejoignez notre mouvement vers un avenir plus vert et plus durable dès aujourd'hui.",
-    bg: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/home-garden-with-different-plants-1684004.jpeg"
-  },
-  contact: {
-    heroImg: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/crop-gardener-hunkering-near-potted-plant-in-garden-5230918.jpeg",
-    faq: [
-      {
-        question: "Quels produits proposez-vous ?",
-        answer: "Nous proposons des kits potagers, des graines bio et du terreau naturel pour jardinage intérieur."
-      },
-      {
-        question: "Comment fonctionne le kit UrbanGrow ?",
-        answer: "Le kit vous permet de cultiver vos herbes, suivi via notre application mobile pour une expérience simplifiée."
-      },
-      {
-        question: "Offrez-vous une livraison gratuite ?",
-        answer: "Oui, la livraison est gratuite pour toute commande supérieure à 49€."
-      },
-      {
-        question: "Comment puis-je contacter le service client ?",
-        answer: "Vous pouvez nous contacter via notre formulaire ou par e-mail pour toute assistance."
-      }
-    ]
-  },
-  products: [
-    {
-      id: "potager-d-interieur-connecte-urbangrow",
-      name: "Potager d'intérieur connecté UrbanGrow",
-      category: "Kits",
-      price: 129.90,
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-td1k3ztd1k3ztd1k-scaled.png",
-      description: "Le kit potager hydroponique connecté pour cultiver vos herbes aromatiques en toute simplicité.",
-    },
-    { id: "basilic", name: "Basilic", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/basilic.jpg", description: "Un basilic frais et parfumé toute l'année dans votre cuisine." },
-    { id: "ciboulette", name: "Ciboulette", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/ciboulette.jpg", description: "La ciboulette, l'indispensable de vos salades et sauces." },
-    { id: "persil", name: "Persil Commun", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/persil-commun-2-petroselinum-hortense.jpg", description: "Le persil frais pour relever tous vos plats." },
-    { id: "thym", name: "Thym d'été", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/thym-dete-thymus-vulgaris.jpg", description: "Un thym au parfum boisé et citronné." },
-    { id: "romarin", name: "Romarin", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/romarin.jpg", description: "Le romarin, symbole de la cuisine méditerranéenne." },
-    { id: "coriandre", name: "Coriandre", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/coriandre-marino-eko.jpeg", description: "Une coriandre aux feuilles tendres et parfumées." },
-    { id: "melisse", name: "Mélisse Citronnelle", category: "Graines", price: 3.50, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/melisse-citronnelle-herbe-au-citron-the-de-france-eko.jpg", description: "La mélisse citronnelle pour vos infusions." },
-    { id: "terreau", name: "Terreau Naturel 5L", category: "Terreau", price: 9.90, image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/3606604705388_0.webp", description: "Un terreau biologique spécialement conçu pour les potagers d'intérieur." },
-  ],
-  blog: [
-    {
-      id: "mastering-agriculture-urbaine",
-      title: "Maîtriser l'agriculture urbaine chez soi",
-      excerpt: "Découvrez les bases pour commencer votre propre potager d'intérieur et réussir vos premières récoltes.",
-      content: `
-        L'agriculture urbaine n'est plus un rêve lointain réservé à ceux qui possèdent un jardin. Avec les avancées technologiques et une meilleure compréhension des besoins des plantes, n'importe qui peut transformer un coin de son appartement en une oasis de verdure productive.
+/**
+ * UrbanGrow Famille — données de l'application mobile (version Famille)
+ *
+ * Toutes les données affichées dans l'app. Pas de back-end : c'est une démo
+ * fonctionnelle. Les recettes de l'app d'origine ont été remplacées par des
+ * activités à faire en famille (voir `activities`), et une rubrique de jeux
+ * d'apprentissage a été ajoutée (voir `games`).
+ */
 
-        ### Pourquoi se lancer ?
-        Cultiver chez soi, c'est avant tout reprendre le contrôle sur son alimentation. Pas de pesticides, pas de transport, et une fraîcheur inégalée. Mais c'est aussi une activité thérapeutique qui réduit le stress et reconnecte au cycle de la vie.
+/* ------------------------------------------------------------------ */
+/* Comptes de démo — le rôle (famille / enseignant) est défini "en interne" */
+/* ------------------------------------------------------------------ */
 
-        ### Les 3 piliers de la réussite :
-        1. **La Lumière** : En appartement, elle est souvent insuffisante. L'utilisation de LED horticoles à spectre complet est indispensable pour simuler le soleil.
-        2. **L'Eau** : Trop ou pas assez ? C'est l'erreur numéro 1. L'hydroponie règle ce problème en apportant exactement ce dont la plante a besoin.
-        3. **Les Nutriments** : Dans un petit espace, le terreau s'épuise vite. Il faut choisir des engrais naturels équilibrés.
+export type Role = "family" | "teacher";
 
-        Découvrez comment nos kits UrbanGrow automatisent ces trois piliers pour vous garantir un succès dès la première semaine.
-      `,
-      date: "24 Mars 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-td1k3ztd1k3ztd1k-scaled.png"
-    },
-    {
-      id: "bienfaits-herbes-fraiches",
-      title: "Les bienfaits des herbes fraîches au quotidien",
-      excerpt: "Pourquoi cultiver ses propres herbes aromatiques change votre cuisine et votre santé.",
-      content: `
-        Le goût n'est que la partie émergée de l'iceberg. Les herbes aromatiques sont de véritables concentrés de bienfaits pour votre organisme.
+export interface Account {
+  email: string;
+  password: string;
+  role: Role;
+  name: string;
+  avatar: string; // emoji
+}
 
-        ### Un boost nutritionnel
-        Saviez-vous que le persil contient plus de vitamine C que l'orange au gramme près ? Ou que le basilic possède des propriétés anti-inflammatoires puissantes ? En les consommant quelques minutes seulement après la récolte, vous préservez 100% de leurs micronutriments, contrairement aux herbes de supermarché qui ont souvent voyagé plusieurs jours.
+export const accounts: Account[] = [
+  {
+    email: "famille@urbangrow.fr",
+    password: "famille",
+    role: "family",
+    name: "Famille Martin",
+    avatar: "👨‍👩‍👧‍👦",
+  },
+  {
+    email: "prof@urbangrow.fr",
+    password: "prof",
+    role: "teacher",
+    name: "Mme Dubois",
+    avatar: "🧑‍🏫",
+  },
+];
 
-        ### Impact sur la santé mentale
-        L'odeur de la menthe fraîche ou du romarin active des zones du cerveau liées à la relaxation et à la concentration. Avoir ces plantes à portée de main dans votre cuisine transforme la préparation des repas en une séance d'aromathérapie naturelle.
+/* ------------------------------------------------------------------ */
+/* Potager connecté — tableau de bord (page Accueil)                   */
+/* ------------------------------------------------------------------ */
 
-        ### Moins de sel, plus de saveur
-        En utilisant des herbes fraîches et puissantes, vous réduisez naturellement votre consommation de sel et de sauces industrielles. C'est le secret des grands chefs pour une cuisine saine mais gourmande.
-      `,
-      date: "28 Mars 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-cw4mf1cw4mf1cw4m1-scaled.png"
-    }
-  ],
-  whitePapers: [
-    {
-      id: "activites-enfant-appartement",
-      title: "10 Activités Essentielles pour le Développement de l'Enfant",
-      excerpt: "Découvrez comment optimiser un petit espace urbain pour favoriser l'éveil et le mouvement de votre enfant.",
-      teaser: `Vivre en appartement avec un enfant en bas âge demande une organisation particulière. Entre le besoin de se défouler et les limites d'espace, comment stimuler sa croissance ? 
-      
-      Ce guide vous propose des solutions concrètes pour transformer votre salon en terrain d'exploration sécurisé et stimulant.`,
-      date: "25 Avril 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-cw4mf1cw4mf1cw4m1-scaled.png",
-      docLink: "https://docs.google.com/document/d/1WLe52GXThrSyCEaYiGUj6BSC8tJORl_VtrU3wICFUsI/edit?usp=sharing"
-    },
-    {
-      id: "reconnecter-enfant-nature",
-      title: "7 ateliers pour reconnecter votre enfant à la nature",
-      excerpt: "L'hypothèse de la biophilie : apprenez à éveiller la curiosité naturelle de vos enfants, même sans jardin.",
-      teaser: `La biophilie est notre besoin inné de connexion avec le vivant. Même en plein centre-ville, il est possible d'éveiller cette sensibilité chez l'enfant à travers des ateliers sensoriels simples.
-      
-      Découvrez nos 7 méthodes pour faire entrer la nature chez vous.`,
-      date: "20 Avril 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-2jwoy92jwoy92jwo1-scaled.png",
-      docLink: "https://docs.google.com/document/d/1P30i_fAaUw0tv5r6mYtzUEpTDPepVkj0aVjOm6qJkrg/edit?tab=t.0"
-    },
-    {
-      id: "apprendre-sans-savoir",
-      title: "Apprendre sans s'en rendre compte",
-      excerpt: "Le guide de la neuro-pédagogie et de l'apprentissage invisible par l'expérience et le plaisir du jeu.",
-      teaser: `Et si le jeu était la forme d'apprentissage la plus sérieuse ? Les neurosciences prouvent que l'absorption d'informations est démultipliée dans un contexte ludique.
-      
-      Nous décryptons pour vous les mécanismes de l'apprentissage invisible.`,
-      date: "15 Avril 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-td1k3ztd1k3ztd1k-scaled.png",
-      docLink: "https://docs.google.com/document/d/1jXs1Erm6dvkblailtbXOEaLSKG_pm-ovGR72DaEk1eI/edit?tab=t.0"
-    },
-    {
-      id: "activites-manuelles-cle",
-      title: "Les activités manuelles : clé d'un apprentissage serein",
-      excerpt: "Comprendre comment la manipulation physique renforce les connexions neuronales et favorise la sérénité.",
-      teaser: `La main est le prolongement du cerveau. En manipulant la terre, les graines ou les outils, l'enfant ancre ses connaissances dans le réel. 
-      
-      Ce livre blanc explore le lien entre motricité fine et développement cognitif.`,
-      date: "10 Avril 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-cw4mf1cw4mf1cw4m1-scaled.png",
-      docLink: "https://docs.google.com/document/d/19qSGPb1qQ49qPz5j7Fbqqs9PoYKmn1jOpdgTQHGfUOw/edit?tab=t.0"
-    },
-    {
-      id: "cuisiner-legumes-enfant",
-      title: "Apprendre à cuisiner les légumes dès 5 ans",
-      excerpt: "Vaincre la néophobie alimentaire par le jeu et l'implication précoce en cuisine.",
-      teaser: `Comment faire aimer les épinards ou la coriandre ? En les faisant pousser ! L'implication de l'enfant de la graine à l'assiette est la méthode la plus efficace contre les blocages alimentaires.
-      
-      Découvrez nos recettes et astuces pédagogiques.`,
-      date: "05 Avril 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-2jwoy92jwoy92jwo1-scaled.png",
-      docLink: "https://docs.google.com/document/d/14wq-zlTH8oAL2yoYYbTdJsWp4VUE4IuHUxQweRPq6UI/edit?tab=t.0"
-    },
-    {
-      id: "alternatives-saines-maison",
-      title: "10 alternatives saines et faites maison",
-      excerpt: "Remplacer les produits industriels par des créations maison sûres et stimulantes pour vos explorateurs.",
-      teaser: `Du goûter aux jouets sensoriels, nos maisons regorgent de produits transformés. Pourtant, faire soi-même est souvent plus simple et bien plus gratifiant.
-      
-      Explorez nos 10 alternatives saines à réaliser en famille.`,
-      date: "01 Avril 2026",
-      image: "https://royalblue-chinchilla-815450.hostingersite.com/wp-content/uploads/2026/03/gemini-generated-image-td1k3ztd1k3ztd1k-scaled.png",
-      docLink: "https://docs.google.com/document/d/1xkhva0uqHk17xDd8NupbYDUTVw4TWb_trEadiehui5o/edit?tab=t.0"
-    }
-  ]
+export type Stage = "Mûr" | "Croissance" | "Germination" | "Semé";
+
+export interface Plant {
+  id: string;
+  name: string;
+  emoji: string;
+  stage: Stage;
+  progress: number; // 0-100
+}
+
+export const plants: Plant[] = [
+  { id: "basilic", name: "Basilic", emoji: "🌿", stage: "Mûr", progress: 100 },
+  { id: "menthe", name: "Menthe", emoji: "🍃", stage: "Croissance", progress: 68 },
+  { id: "persil", name: "Persil", emoji: "🌱", stage: "Croissance", progress: 54 },
+  { id: "coriandre", name: "Coriandre", emoji: "🌾", stage: "Germination", progress: 22 },
+  { id: "ciboulette", name: "Ciboulette", emoji: "🧅", stage: "Germination", progress: 18 },
+  { id: "thym", name: "Thym", emoji: "🌱", stage: "Semé", progress: 6 },
+];
+
+export const sensors = {
+  humidity: 62, // %
+  light: 4200, // lux
+  water: 35, // % réservoir
+  temperature: 21, // °C
 };
+
+/**
+ * Conseils intelligents du potager. L'app d'origine suggérait des *recettes*
+ * de cuisine — on les remplace par des suggestions d'activités en famille.
+ */
+export const advice = [
+  {
+    id: "water",
+    icon: "💧",
+    tone: "warn" as const,
+    title: "Réservoir bientôt vide",
+    text: "Le niveau d'eau est à 35 %. Pensez à remplir le réservoir d'ici 2 jours.",
+    cta: "Voir le tuto",
+    to: "/activites/arrosage-malin",
+  },
+  {
+    id: "harvest",
+    icon: "🌿",
+    tone: "good" as const,
+    title: "Le basilic est prêt !",
+    text: "Récoltez votre basilic en famille et lancez une activité jardinage avec les enfants.",
+    cta: "Activité famille",
+    to: "/activites/recolte-en-famille",
+  },
+  {
+    id: "rotation",
+    icon: "🔄",
+    tone: "info" as const,
+    title: "Pensez à la rotation",
+    text: "Deux bacs se libèrent bientôt. Semez de nouvelles graines avec vos enfants.",
+    cta: "Activité famille",
+    to: "/activites/semis-premiers-pas",
+  },
+];
+
+export const impact = {
+  water: "240 L",
+  carbon: "12 kg",
+  savings: "28 €",
+};
+
+/* ------------------------------------------------------------------ */
+/* Activités à faire en famille (remplacent les recettes)              */
+/* Chaque bloc est cliquable -> tutoriel détaillé pas à pas            */
+/* ------------------------------------------------------------------ */
+
+export interface ActivityStep {
+  title: string;
+  text: string;
+}
+
+export interface Activity {
+  id: string;
+  title: string;
+  emoji: string;
+  category: string;
+  color: string; // teinte de fond (classe tailwind arbitraire)
+  age: string;
+  duration: string;
+  difficulty: "Facile" | "Moyen" | "Aventure";
+  intro: string;
+  materials: string[];
+  steps: ActivityStep[];
+  tip: string;
+}
+
+export const activities: Activity[] = [
+  {
+    id: "semis-premiers-pas",
+    title: "Mes premiers semis",
+    emoji: "🌱",
+    category: "Jardinage",
+    color: "#DCFCE7",
+    age: "3-10 ans",
+    duration: "30 min",
+    difficulty: "Facile",
+    intro:
+      "Plantez vos premières graines ensemble et observez la magie de la germination jour après jour.",
+    materials: [
+      "Des graines (basilic, persil…)",
+      "Un bac du potager UrbanGrow (ou un pot)",
+      "Du terreau",
+      "Un petit arrosoir",
+      "Une étiquette à décorer",
+    ],
+    steps: [
+      { title: "Préparer le bac", text: "Remplissez le bac de terreau jusqu'à 1 cm du bord. Laissez l'enfant tasser doucement avec ses mains." },
+      { title: "Semer les graines", text: "Déposez 2 à 3 graines par trou, à 1 cm de profondeur. Comptez les graines à voix haute, c'est aussi un jeu !" },
+      { title: "Recouvrir et arroser", text: "Recouvrez de terreau et arrosez en pluie fine. La terre doit être humide, pas détrempée." },
+      { title: "Décorer l'étiquette", text: "Dessinez la plante sur l'étiquette et plantez-la dans le bac pour savoir ce qui pousse." },
+      { title: "Observer chaque jour", text: "Notez ensemble la date. Les premières pousses apparaissent en 5 à 10 jours : un vrai rendez-vous quotidien !" },
+    ],
+    tip: "Astuce : prenez une photo chaque jour pour faire un petit film de la pousse à la fin.",
+  },
+  {
+    id: "recolte-en-famille",
+    title: "La grande récolte",
+    emoji: "🧺",
+    category: "Jardinage",
+    color: "#FEF9C3",
+    age: "4-12 ans",
+    duration: "20 min",
+    difficulty: "Facile",
+    intro:
+      "Les herbes sont mûres ! Apprenez à récolter sans abîmer la plante pour qu'elle repousse encore et encore.",
+    materials: ["Des ciseaux à bouts ronds", "Un petit panier", "Vos plantes mûres"],
+    steps: [
+      { title: "Repérer ce qui est prêt", text: "Cherchez les tiges les plus hautes et les plus fournies. Le basilic est prêt quand il a au moins 6 feuilles." },
+      { title: "Couper au bon endroit", text: "Coupez juste au-dessus d'une paire de feuilles : deux nouvelles tiges repousseront à cet endroit." },
+      { title: "Remplir le panier", text: "Laissez l'enfant déposer délicatement les feuilles dans le panier sans les écraser." },
+      { title: "Sentir et goûter", text: "Froissez une feuille entre les doigts et sentez le parfum. Décrivez ensemble l'odeur : c'est un atelier sensoriel !" },
+    ],
+    tip: "Ne récoltez jamais plus d'un tiers de la plante d'un coup : elle doit garder des feuilles pour grandir.",
+  },
+  {
+    id: "arrosage-malin",
+    title: "L'arrosage malin",
+    emoji: "💧",
+    category: "Jardinage",
+    color: "#DBEAFE",
+    age: "3-8 ans",
+    duration: "10 min",
+    difficulty: "Facile",
+    intro:
+      "Comprendre de combien d'eau une plante a besoin, et apprendre à remplir le réservoir du potager.",
+    materials: ["Le réservoir du potager", "Une bouteille d'eau", "Un doigt curieux"],
+    steps: [
+      { title: "Le test du doigt", text: "Enfoncez un doigt dans la terre : si c'est sec sur 2 cm, la plante a soif." },
+      { title: "Remplir le réservoir", text: "Versez l'eau doucement jusqu'au repère « max ». Observez le niveau monter." },
+      { title: "Parler aux plantes", text: "On dit que parler aux plantes les aide à pousser. Vrai ou faux ? Faites l'expérience sur 2 semaines !" },
+    ],
+    tip: "Trop d'eau noie les racines. Mieux vaut un peu, souvent, que beaucoup d'un coup.",
+  },
+  {
+    id: "herbier-maison",
+    title: "Un herbier maison",
+    emoji: "📗",
+    category: "Créatif",
+    color: "#F3E8FF",
+    age: "5-12 ans",
+    duration: "45 min",
+    difficulty: "Moyen",
+    intro:
+      "Conservez vos plus belles feuilles et créez un herbier souvenir à feuilleter toute l'année.",
+    materials: ["Des feuilles cueillies", "Du papier épais", "De gros livres", "De la colle", "Des feutres"],
+    steps: [
+      { title: "Cueillir et choisir", text: "Sélectionnez des feuilles bien à plat, sans taches. Variez les formes et les tailles." },
+      { title: "Presser les feuilles", text: "Glissez-les entre deux feuilles de papier, sous une pile de livres. Patientez 1 semaine." },
+      { title: "Coller et nommer", text: "Collez chaque feuille sur une page et écrivez son nom et la date à côté." },
+      { title: "Décorer la couverture", text: "Donnez un titre à votre herbier et décorez la couverture en famille." },
+    ],
+    tip: "Profitez de la pause d'une semaine pour observer comment les feuilles changent de couleur en séchant.",
+  },
+  {
+    id: "chasse-au-tresor-nature",
+    title: "Chasse au trésor nature",
+    emoji: "🔎",
+    category: "Exploration",
+    color: "#FFE4E6",
+    age: "4-10 ans",
+    duration: "1 h",
+    difficulty: "Aventure",
+    intro:
+      "Une chasse au trésor sensorielle dans le parc ou le jardin pour réveiller la curiosité des explorateurs.",
+    materials: ["La liste de trésors (à imprimer ou dessiner)", "Un sac de collecte", "De bonnes chaussures"],
+    steps: [
+      { title: "Préparer la liste", text: "Dessinez ensemble 8 trésors à trouver : une feuille rouge, un caillou lisse, quelque chose qui sent bon…" },
+      { title: "Partir en exploration", text: "Direction le parc ! Chaque trésor trouvé est coché sur la liste." },
+      { title: "Observer avec les 5 sens", text: "À chaque trouvaille, demandez : c'est doux ? Ça sent quoi ? Ça fait quel bruit ?" },
+      { title: "Le trésor final", text: "De retour à la maison, étalez la collecte et racontez l'aventure. Gardez un trésor pour l'herbier !" },
+    ],
+    tip: "Adaptez la liste à la saison : pommes de pin en automne, fleurs au printemps.",
+  },
+  {
+    id: "pot-recycle",
+    title: "Un pot à partir d'un déchet",
+    emoji: "♻️",
+    category: "Créatif",
+    color: "#CCFBF1",
+    age: "5-12 ans",
+    duration: "40 min",
+    difficulty: "Moyen",
+    intro:
+      "Transformez une boîte d'œufs ou une bouteille en pot à semis : un atelier récup' bon pour la planète.",
+    materials: ["Une boîte d'œufs ou bouteille", "Des ciseaux", "Du terreau", "Des graines", "De la peinture"],
+    steps: [
+      { title: "Choisir son déchet", text: "Une boîte d'œufs fait 6 mini-pots, une bouteille coupée en fait un grand. À vous de choisir !" },
+      { title: "Préparer le pot", text: "Un adulte perce un petit trou au fond pour l'eau. Décorez ensuite à la peinture." },
+      { title: "Remplir et semer", text: "Ajoutez le terreau et semez une graine par alvéole." },
+      { title: "Installer au potager", text: "Posez vos pots récup' près du potager et arrosez. Bravo, vous avez sauvé un déchet !" },
+    ],
+    tip: "La boîte d'œufs en carton peut être plantée directement en terre : elle se décompose toute seule.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Jeux d'apprentissage (nouvelle rubrique)                            */
+/* ------------------------------------------------------------------ */
+
+export type GameType = "memory" | "quiz" | "count";
+
+export interface Game {
+  id: string;
+  title: string;
+  emoji: string;
+  type: GameType;
+  color: string;
+  age: string;
+  skill: string;
+  description: string;
+}
+
+export const games: Game[] = [
+  {
+    id: "memory-plantes",
+    title: "Memory des plantes",
+    emoji: "🃏",
+    type: "memory",
+    color: "#DCFCE7",
+    age: "3-8 ans",
+    skill: "Mémoire & observation",
+    description: "Retrouve les paires de plantes identiques. Trouve-les toutes avec le moins de coups possible !",
+  },
+  {
+    id: "quiz-nature",
+    title: "Quiz de la nature",
+    emoji: "🧠",
+    type: "quiz",
+    color: "#DBEAFE",
+    age: "6-12 ans",
+    skill: "Connaissances",
+    description: "Réponds aux questions sur les plantes, les saisons et le jardinage. Deviens un·e expert·e du potager !",
+  },
+  {
+    id: "compte-graines",
+    title: "Compte les graines",
+    emoji: "🔢",
+    type: "count",
+    color: "#FEF9C3",
+    age: "3-6 ans",
+    skill: "Calcul & nombres",
+    description: "Compte les graines tombées dans le bac et choisis le bon chiffre. Parfait pour apprendre à compter !",
+  },
+];
+
+// Cartes du jeu de memory (chaque emoji forme une paire)
+export const memoryEmojis = ["🌿", "🍅", "🥕", "🌻", "🍓", "🌽"];
+
+// Questions du quiz nature
+export interface QuizQuestion {
+  question: string;
+  emoji: string;
+  options: string[];
+  answer: number; // index de la bonne réponse
+  fact: string; // anecdote affichée après la réponse
+}
+
+export const quizQuestions: QuizQuestion[] = [
+  {
+    question: "De quoi une plante a-t-elle besoin pour pousser ?",
+    emoji: "🌱",
+    options: ["De lumière et d'eau", "De bonbons", "De télévision"],
+    answer: 0,
+    fact: "Les plantes fabriquent leur nourriture grâce à la lumière : c'est la photosynthèse !",
+  },
+  {
+    question: "Quelle partie de la plante pousse sous la terre ?",
+    emoji: "🥕",
+    options: ["Les fleurs", "Les racines", "Les feuilles"],
+    answer: 1,
+    fact: "Les racines boivent l'eau et tiennent la plante bien droite dans le sol.",
+  },
+  {
+    question: "À quelle saison sème-t-on le plus de graines ?",
+    emoji: "🌷",
+    options: ["En hiver", "Au printemps", "Jamais"],
+    answer: 1,
+    fact: "Au printemps, il fait plus doux et les jours rallongent : parfait pour les semis !",
+  },
+  {
+    question: "Quel petit animal aide les fleurs en transportant le pollen ?",
+    emoji: "🐝",
+    options: ["L'abeille", "Le requin", "Le pingouin"],
+    answer: 0,
+    fact: "Les abeilles butinent de fleur en fleur et permettent aux fruits de se former. Merci les abeilles !",
+  },
+  {
+    question: "Que devient un trognon de pomme au compost ?",
+    emoji: "🍎",
+    options: ["Du plastique", "De la terre riche", "De l'eau"],
+    answer: 1,
+    fact: "Au compost, les déchets se transforment en terreau qui nourrit de nouvelles plantes.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Contenu pédagogique (sans recettes)                                 */
+/* ------------------------------------------------------------------ */
+
+export interface Article {
+  id: string;
+  title: string;
+  emoji: string;
+  category: string;
+  read: string;
+  excerpt: string;
+  body: string[];
+}
+
+export const articles: Article[] = [
+  {
+    id: "pourquoi-jardiner-en-famille",
+    title: "Pourquoi jardiner en famille ?",
+    emoji: "👨‍👩‍👧",
+    category: "Bien-être",
+    read: "3 min",
+    excerpt: "Le jardinage partagé renforce les liens et apprend la patience aux enfants.",
+    body: [
+      "Jardiner ensemble, c'est bien plus que faire pousser des plantes. C'est partager un moment, observer le vivant et apprendre la patience.",
+      "Les enfants qui jardinent goûtent plus facilement les légumes : ils sont fiers de manger ce qu'ils ont fait pousser.",
+      "C'est aussi une excellente activité pour ralentir, se déconnecter des écrans et reconnecter toute la famille à la nature, même en appartement.",
+    ],
+  },
+  {
+    id: "le-cycle-d-une-plante",
+    title: "Le cycle de vie d'une plante",
+    emoji: "🔄",
+    category: "Sciences",
+    read: "4 min",
+    excerpt: "De la graine à la récolte : les grandes étapes à observer avec les enfants.",
+    body: [
+      "Tout commence par une graine. À l'intérieur dort une mini-plante qui attend l'eau et la chaleur pour se réveiller.",
+      "Vient ensuite la germination : une petite racine descend, une tige monte vers la lumière. Puis les feuilles se déploient.",
+      "La plante grandit, fleurit, et donne parfois des fruits qui contiennent… de nouvelles graines. Et le cycle recommence !",
+    ],
+  },
+  {
+    id: "apprendre-en-jouant",
+    title: "Apprendre sans s'en rendre compte",
+    emoji: "🎲",
+    category: "Pédagogie",
+    read: "3 min",
+    excerpt: "Le jeu est la façon la plus naturelle d'apprendre pour un enfant.",
+    body: [
+      "Les neurosciences le confirment : on retient bien mieux ce que l'on apprend dans le plaisir et le mouvement.",
+      "Compter des graines, trier des feuilles, gagner un quiz : derrière chaque jeu de l'application se cache un apprentissage.",
+      "Laissez l'enfant se tromper et recommencer. L'erreur fait partie du jeu — et de l'apprentissage !",
+    ],
+  },
+  {
+    id: "les-bienfaits-des-herbes",
+    title: "Les bienfaits des herbes fraîches",
+    emoji: "🌿",
+    category: "Santé",
+    read: "3 min",
+    excerpt: "Pourquoi cultiver ses herbes change la cuisine et la santé de la famille.",
+    body: [
+      "Les herbes fraîches sont de vraies bombes de vitamines, bien plus que celles qui ont voyagé plusieurs jours en supermarché.",
+      "Leur parfum transforme un plat simple en festin, et permet de réduire le sel naturellement.",
+      "Avoir des herbes à portée de main, c'est inviter les enfants à assaisonner eux-mêmes leur assiette : ils adorent ça !",
+    ],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Communauté                                                          */
+/* ------------------------------------------------------------------ */
+
+export interface Post {
+  id: string;
+  author: string;
+  avatar: string;
+  time: string;
+  text: string;
+  likes: number;
+  comments: number;
+  tag: string;
+}
+
+export const posts: Post[] = [
+  {
+    id: "p1",
+    author: "Famille Leroy",
+    avatar: "👩‍👧",
+    time: "il y a 2 h",
+    text: "Première récolte de basilic avec Léa (5 ans) ! Elle a adoré couper les feuilles. On a fait l'activité « La grande récolte » 🌿",
+    likes: 42,
+    comments: 8,
+    tag: "Récolte",
+  },
+  {
+    id: "p2",
+    author: "Papa de Noé",
+    avatar: "👨",
+    time: "il y a 5 h",
+    text: "Le quiz nature est top, mon fils a eu 5/5 ! Il m'a appris ce qu'est la photosynthèse 😅",
+    likes: 31,
+    comments: 5,
+    tag: "Jeux",
+  },
+  {
+    id: "p3",
+    author: "Famille Said",
+    avatar: "👨‍👧‍👦",
+    time: "hier",
+    text: "Notre herbier maison est terminé après 1 semaine de séchage. Les enfants sont super fiers du résultat 📗",
+    likes: 67,
+    comments: 12,
+    tag: "Créatif",
+  },
+  {
+    id: "p4",
+    author: "Maman Zen",
+    avatar: "👩",
+    time: "hier",
+    text: "On a transformé une boîte d'œufs en pots à semis. Zéro déchet et les petits ont adoré peindre ♻️",
+    likes: 28,
+    comments: 3,
+    tag: "Récup'",
+  },
+];
+
+/* Navigation principale (barre du bas) */
+export const familyNav = [
+  { to: "/", label: "Accueil", icon: "Home" },
+  { to: "/activites", label: "Activités", icon: "Sprout" },
+  { to: "/jeux", label: "Jeux", icon: "Gamepad2" },
+  { to: "/contenu", label: "Contenu", icon: "BookOpen" },
+  { to: "/communaute", label: "Famille", icon: "Users" },
+];

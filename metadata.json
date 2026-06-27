@@ -1,6 +1,6 @@
 {
-  "name": "UrbanGrow",
-  "description": "Votre potager d'intérieur connecté. Découvrez nos kits hydroponiques, graines bio et solutions de jardinage urbain durable.",
+  "name": "UrbanGrow Famille",
+  "description": "Application mobile Famille du potager connecté UrbanGrow : suivi du potager, activités à faire en famille avec tutoriels, jeux d'apprentissage pour les enfants, contenu pédagogique et communauté. Connexion famille/enseignant.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }

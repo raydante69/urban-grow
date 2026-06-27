@@ -48,12 +48,12 @@ export default function Activities() {
             to={`/activites/${a.id}`}
             className="card flex items-center gap-4 active:scale-[0.99] transition"
           >
-            <span
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-3xl"
-              style={{ background: a.color }}
-            >
-              {a.emoji}
-            </span>
+            <img
+              src={a.image}
+              alt={a.title}
+              loading="lazy"
+              className="thumb h-16 w-16 shrink-0 rounded-2xl"
+            />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
                 <span className={`pill ${diffStyles[a.difficulty]}`}>{a.difficulty}</span>
@@ -68,7 +68,7 @@ export default function Activities() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <FavButton item={{ id: a.id, kind: "activity", title: a.title, emoji: a.emoji, to: `/activites/${a.id}` }} />
+              <FavButton item={{ id: a.id, kind: "activity", title: a.title, emoji: a.emoji, image: a.image, to: `/activites/${a.id}` }} />
               <ChevronRight size={18} className="text-muted" />
             </div>
           </Link>

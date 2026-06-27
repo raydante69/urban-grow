@@ -10,6 +10,7 @@ export interface FavItem {
   kind: "activity" | "game" | "article";
   title: string;
   emoji: string;
+  image: string;
   to: string;
 }
 

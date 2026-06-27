@@ -30,12 +30,12 @@ export default function Games() {
             to={`/jeux/${g.id}`}
             className="card flex items-center gap-4 active:scale-[0.99] transition"
           >
-            <span
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-3xl"
-              style={{ background: g.color }}
-            >
-              {g.emoji}
-            </span>
+            <div className="relative h-16 w-16 shrink-0">
+              <img src={g.image} alt={g.title} loading="lazy" className="thumb h-full w-full rounded-2xl" />
+              <span className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full bg-white text-base shadow-[var(--shadow-soft)]">
+                {g.emoji}
+              </span>
+            </div>
             <div className="flex-1 min-w-0">
               <p className="font-display font-semibold text-leaf-dark leading-tight">{g.title}</p>
               <p className="mt-0.5 text-sm text-muted leading-snug line-clamp-2">{g.description}</p>
@@ -45,7 +45,7 @@ export default function Games() {
               </div>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <FavButton item={{ id: g.id, kind: "game", title: g.title, emoji: g.emoji, to: `/jeux/${g.id}` }} />
+              <FavButton item={{ id: g.id, kind: "game", title: g.title, emoji: g.emoji, image: g.image, to: `/jeux/${g.id}` }} />
               <span className="grid h-9 w-9 place-items-center rounded-full bg-leaf text-white">
                 <Play size={16} fill="currentColor" />
               </span>

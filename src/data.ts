@@ -11,6 +11,23 @@
 /* Comptes de démo — le rôle (famille / enseignant) est défini "en interne" */
 /* ------------------------------------------------------------------ */
 
+/* Banque d'images réelles (photos UrbanGrow, optimisées et embarquées dans le
+   projet -> aucune dépendance réseau externe, chargement fiable et hors ligne). */
+export const img = {
+  potager: "/img/potager.jpg",
+  teaching: "/img/teaching.jpg",
+  nature: "/img/nature.jpg",
+  garden: "/img/garden.jpg",
+  watering: "/img/watering.jpg",
+  basilic: "/img/basilic.jpg",
+  ciboulette: "/img/ciboulette.jpg",
+  persil: "/img/persil.jpg",
+  thym: "/img/thym.jpg",
+  romarin: "/img/romarin.jpg",
+  coriandre: "/img/coriandre.jpg",
+  menthe: "/img/menthe.jpg",
+};
+
 export type Role = "family" | "teacher";
 
 export interface Account {
@@ -48,17 +65,18 @@ export interface Plant {
   id: string;
   name: string;
   emoji: string;
+  image: string;
   stage: Stage;
   progress: number; // 0-100
 }
 
 export const plants: Plant[] = [
-  { id: "basilic", name: "Basilic", emoji: "🌿", stage: "Mûr", progress: 100 },
-  { id: "menthe", name: "Menthe", emoji: "🍃", stage: "Croissance", progress: 68 },
-  { id: "persil", name: "Persil", emoji: "🌱", stage: "Croissance", progress: 54 },
-  { id: "coriandre", name: "Coriandre", emoji: "🌾", stage: "Germination", progress: 22 },
-  { id: "ciboulette", name: "Ciboulette", emoji: "🧅", stage: "Germination", progress: 18 },
-  { id: "thym", name: "Thym", emoji: "🌱", stage: "Semé", progress: 6 },
+  { id: "basilic", name: "Basilic", emoji: "🌿", image: img.basilic, stage: "Mûr", progress: 100 },
+  { id: "menthe", name: "Menthe", emoji: "🍃", image: img.menthe, stage: "Croissance", progress: 68 },
+  { id: "persil", name: "Persil", emoji: "🌱", image: img.persil, stage: "Croissance", progress: 54 },
+  { id: "coriandre", name: "Coriandre", emoji: "🌾", image: img.coriandre, stage: "Germination", progress: 22 },
+  { id: "ciboulette", name: "Ciboulette", emoji: "🧅", image: img.ciboulette, stage: "Germination", progress: 18 },
+  { id: "thym", name: "Thym", emoji: "🌱", image: img.thym, stage: "Semé", progress: 6 },
 ];
 
 export const sensors = {
@@ -122,6 +140,7 @@ export interface Activity {
   id: string;
   title: string;
   emoji: string;
+  image: string;
   category: string;
   color: string; // teinte de fond (classe tailwind arbitraire)
   age: string;
@@ -138,6 +157,7 @@ export const activities: Activity[] = [
     id: "semis-premiers-pas",
     title: "Mes premiers semis",
     emoji: "🌱",
+    image: img.potager,
     category: "Jardinage",
     color: "#DCFCE7",
     age: "3-10 ans",
@@ -165,6 +185,7 @@ export const activities: Activity[] = [
     id: "recolte-en-famille",
     title: "La grande récolte",
     emoji: "🧺",
+    image: img.basilic,
     category: "Jardinage",
     color: "#FEF9C3",
     age: "4-12 ans",
@@ -185,6 +206,7 @@ export const activities: Activity[] = [
     id: "arrosage-malin",
     title: "L'arrosage malin",
     emoji: "💧",
+    image: img.watering,
     category: "Jardinage",
     color: "#DBEAFE",
     age: "3-8 ans",
@@ -204,6 +226,7 @@ export const activities: Activity[] = [
     id: "herbier-maison",
     title: "Un herbier maison",
     emoji: "📗",
+    image: img.nature,
     category: "Créatif",
     color: "#F3E8FF",
     age: "5-12 ans",
@@ -224,6 +247,7 @@ export const activities: Activity[] = [
     id: "chasse-au-tresor-nature",
     title: "Chasse au trésor nature",
     emoji: "🔎",
+    image: img.garden,
     category: "Exploration",
     color: "#FFE4E6",
     age: "4-10 ans",
@@ -244,6 +268,7 @@ export const activities: Activity[] = [
     id: "pot-recycle",
     title: "Un pot à partir d'un déchet",
     emoji: "♻️",
+    image: img.romarin,
     category: "Créatif",
     color: "#CCFBF1",
     age: "5-12 ans",
@@ -272,6 +297,7 @@ export interface Game {
   id: string;
   title: string;
   emoji: string;
+  image: string;
   type: GameType;
   color: string;
   age: string;
@@ -284,6 +310,7 @@ export const games: Game[] = [
     id: "memory-plantes",
     title: "Memory des plantes",
     emoji: "🃏",
+    image: img.garden,
     type: "memory",
     color: "#DCFCE7",
     age: "3-8 ans",
@@ -294,6 +321,7 @@ export const games: Game[] = [
     id: "quiz-nature",
     title: "Quiz de la nature",
     emoji: "🧠",
+    image: img.teaching,
     type: "quiz",
     color: "#DBEAFE",
     age: "6-12 ans",
@@ -304,6 +332,7 @@ export const games: Game[] = [
     id: "compte-graines",
     title: "Compte les graines",
     emoji: "🔢",
+    image: img.potager,
     type: "count",
     color: "#FEF9C3",
     age: "3-6 ans",
@@ -370,6 +399,7 @@ export interface Article {
   id: string;
   title: string;
   emoji: string;
+  image: string;
   category: string;
   read: string;
   excerpt: string;
@@ -381,6 +411,7 @@ export const articles: Article[] = [
     id: "pourquoi-jardiner-en-famille",
     title: "Pourquoi jardiner en famille ?",
     emoji: "👨‍👩‍👧",
+    image: img.teaching,
     category: "Bien-être",
     read: "3 min",
     excerpt: "Le jardinage partagé renforce les liens et apprend la patience aux enfants.",
@@ -394,6 +425,7 @@ export const articles: Article[] = [
     id: "le-cycle-d-une-plante",
     title: "Le cycle de vie d'une plante",
     emoji: "🔄",
+    image: img.nature,
     category: "Sciences",
     read: "4 min",
     excerpt: "De la graine à la récolte : les grandes étapes à observer avec les enfants.",
@@ -407,6 +439,7 @@ export const articles: Article[] = [
     id: "apprendre-en-jouant",
     title: "Apprendre sans s'en rendre compte",
     emoji: "🎲",
+    image: img.garden,
     category: "Pédagogie",
     read: "3 min",
     excerpt: "Le jeu est la façon la plus naturelle d'apprendre pour un enfant.",
@@ -420,6 +453,7 @@ export const articles: Article[] = [
     id: "les-bienfaits-des-herbes",
     title: "Les bienfaits des herbes fraîches",
     emoji: "🌿",
+    image: img.coriandre,
     category: "Santé",
     read: "3 min",
     excerpt: "Pourquoi cultiver ses herbes change la cuisine et la santé de la famille.",

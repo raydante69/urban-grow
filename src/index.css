@@ -30,20 +30,31 @@
       radial-gradient(900px circle at 50% -200px, #BBF7D0 0%, transparent 60%),
       var(--color-cream);
   }
+  /* Centre l'app dans la fenêtre ; sur ordinateur, la page ne défile pas :
+     c'est l'écran du téléphone qui défile à l'intérieur du cadre. */
+  #root {
+    @apply min-h-screen flex justify-center items-stretch md:items-center md:py-6;
+  }
   h1, h2, h3, h4 {
     @apply font-display font-semibold text-leaf-dark tracking-tight;
   }
 }
 
 @layer components {
-  /* Cadre façon téléphone — l'app vit dans un écran mobile centré */
+  /* Cadre façon téléphone — hauteur fixe et réaliste : le contenu défile
+     à l'intérieur, le cadre du téléphone reste en place. */
   .phone-shell {
-    @apply relative w-full max-w-[440px] mx-auto bg-cream min-h-screen
-           md:my-6 md:min-h-[860px] md:rounded-[2.25rem] md:shadow-2xl
-           md:ring-8 md:ring-leaf-dark/90 overflow-hidden flex flex-col;
+    @apply relative w-full max-w-[420px] bg-cream overflow-hidden flex flex-col
+           h-[100dvh]
+           md:h-[760px] md:max-h-[90vh] md:rounded-[2.25rem] md:shadow-2xl
+           md:ring-8 md:ring-leaf-dark/90;
   }
   .screen {
     @apply flex-1 overflow-y-auto px-5 pt-5 pb-28 scroll-smooth;
+  }
+  /* Vignette image réutilisable */
+  .thumb {
+    @apply object-cover bg-leaf-soft;
   }
   .card {
     @apply bg-white rounded-3xl p-4 shadow-[var(--shadow-card)] border border-leaf-dark/5;

@@ -31,30 +31,36 @@ export default function ActivityDetail() {
 
   return (
     <div className="space-y-5">
-      {/* En-tête illustré */}
-      <div className="-mx-5 -mt-5 px-5 pt-5 pb-6" style={{ background: activity.color }}>
-        <div className="flex items-center justify-between">
-          <button
-            onClick={() => navigate(-1)}
-            className="grid h-10 w-10 place-items-center rounded-2xl bg-white/70 text-leaf-dark active:scale-95 transition"
-            aria-label="Retour"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <FavButton
-            item={{ id: activity.id, kind: "activity", title: activity.title, emoji: activity.emoji, to: `/activites/${activity.id}` }}
-            size={20}
-          />
+      {/* En-tête photo */}
+      <div className="-mx-5 -mt-5">
+        <div className="relative h-52">
+          <img src={activity.image} alt={activity.title} className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-leaf-dark/90 via-leaf-dark/20 to-leaf-dark/35" />
+          <div className="relative flex items-center justify-between p-5">
+            <button
+              onClick={() => navigate(-1)}
+              className="grid h-10 w-10 place-items-center rounded-2xl bg-white/85 text-leaf-dark active:scale-95 transition"
+              aria-label="Retour"
+            >
+              <ArrowLeft size={20} />
+            </button>
+            <FavButton
+              item={{ id: activity.id, kind: "activity", title: activity.title, emoji: activity.emoji, image: activity.image, to: `/activites/${activity.id}` }}
+              size={20}
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <span className="pill bg-white/20 text-white backdrop-blur-sm">{activity.category}</span>
+            <h1 className="mt-1.5 text-2xl text-white drop-shadow">{activity.title}</h1>
+          </div>
         </div>
-        <div className="mt-4 text-center">
-          <span className="text-6xl">{activity.emoji}</span>
-          <h1 className="mt-2 text-2xl">{activity.title}</h1>
-          <p className="mt-1 text-sm font-semibold text-leaf-dark/70">{activity.intro}</p>
-        </div>
-        <div className="mt-4 flex justify-center gap-2">
-          <span className="pill bg-white/70 text-leaf-dark"><Clock size={13} /> {activity.duration}</span>
-          <span className="pill bg-white/70 text-leaf-dark"><Baby size={13} /> {activity.age}</span>
-          <span className="pill bg-white/70 text-leaf-dark"><Gauge size={13} /> {activity.difficulty}</span>
+        <div className="px-5 pt-4 pb-5" style={{ background: activity.color }}>
+          <p className="text-center text-sm font-semibold text-leaf-dark/80">{activity.intro}</p>
+          <div className="mt-3 flex justify-center gap-2">
+            <span className="pill bg-white/70 text-leaf-dark"><Clock size={13} /> {activity.duration}</span>
+            <span className="pill bg-white/70 text-leaf-dark"><Baby size={13} /> {activity.age}</span>
+            <span className="pill bg-white/70 text-leaf-dark"><Gauge size={13} /> {activity.difficulty}</span>
+          </div>
         </div>
       </div>
 

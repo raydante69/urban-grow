@@ -29,16 +29,17 @@ export default function ContentDetail() {
           <ArrowLeft size={20} />
         </button>
         <FavButton
-          item={{ id: article.id, kind: "article", title: article.title, emoji: article.emoji, to: `/contenu/${article.id}` }}
+          item={{ id: article.id, kind: "article", title: article.title, emoji: article.emoji, image: article.image, to: `/contenu/${article.id}` }}
           size={20}
         />
       </div>
 
+      <div className="overflow-hidden rounded-3xl shadow-[var(--shadow-card)]">
+        <img src={article.image} alt={article.title} className="h-44 w-full object-cover" />
+      </div>
+
       <div className="text-center">
-        <span className="text-6xl">{article.emoji}</span>
-        <span className="mt-3 block">
-          <span className="pill bg-sky/15 text-sky">{article.category}</span>
-        </span>
+        <span className="pill bg-sky/15 text-sky">{article.category}</span>
         <h1 className="mt-3 text-2xl leading-tight">{article.title}</h1>
         <span className="mt-2 inline-flex items-center gap-1 text-xs text-muted font-semibold">
           <Clock size={12} /> {article.read} de lecture

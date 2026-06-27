@@ -15,22 +15,23 @@ export default function Content() {
         </p>
       </header>
 
-      {/* À la une */}
+      {/* À la une (photo réelle) */}
       <Link
         to={`/contenu/${featured.id}`}
-        className="block rounded-3xl bg-gradient-to-br from-leaf to-leaf-dark p-5 text-white shadow-[var(--shadow-card)] active:scale-[0.99] transition"
+        className="relative block overflow-hidden rounded-3xl shadow-[var(--shadow-card)] active:scale-[0.99] transition"
       >
-        <div className="flex items-center justify-between">
-          <span className="pill bg-white/15 text-white">À la une</span>
-          <span className="text-5xl">{featured.emoji}</span>
+        <img src={featured.image} alt={featured.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-leaf-dark/95 via-leaf-dark/45 to-leaf-dark/20" />
+        <div className="relative p-5 pt-20 text-white">
+          <span className="pill bg-white/20 text-white backdrop-blur-sm">À la une</span>
+          <h2 className="mt-2 text-xl font-display font-semibold text-white leading-snug">
+            {featured.title}
+          </h2>
+          <p className="mt-1 text-sm text-white/85 leading-snug">{featured.excerpt}</p>
+          <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold">
+            Lire l'article <ChevronRight size={15} />
+          </span>
         </div>
-        <h2 className="mt-3 text-xl font-display font-semibold text-white leading-snug">
-          {featured.title}
-        </h2>
-        <p className="mt-1 text-sm text-white/80 leading-snug">{featured.excerpt}</p>
-        <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold">
-          Lire l'article <ChevronRight size={15} />
-        </span>
       </Link>
 
       <div className="space-y-3">
@@ -40,9 +41,7 @@ export default function Content() {
             to={`/contenu/${a.id}`}
             className="card flex items-center gap-4 active:scale-[0.99] transition"
           >
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-leaf-soft text-3xl">
-              {a.emoji}
-            </span>
+            <img src={a.image} alt={a.title} loading="lazy" className="thumb h-14 w-14 shrink-0 rounded-2xl" />
             <div className="flex-1 min-w-0">
               <span className="pill bg-sky/15 text-sky !py-0.5">{a.category}</span>
               <p className="mt-1 font-display font-semibold text-leaf-dark leading-tight">{a.title}</p>
@@ -50,7 +49,7 @@ export default function Content() {
                 <Clock size={12} /> {a.read}
               </span>
             </div>
-            <FavButton item={{ id: a.id, kind: "article", title: a.title, emoji: a.emoji, to: `/contenu/${a.id}` }} />
+            <FavButton item={{ id: a.id, kind: "article", title: a.title, emoji: a.emoji, image: a.image, to: `/contenu/${a.id}` }} />
           </Link>
         ))}
       </div>

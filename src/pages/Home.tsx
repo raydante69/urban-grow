@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Droplets, Sun, Waves, Thermometer, ChevronRight, Sparkles, Leaf } from "lucide-react";
-import { plants, sensors, advice, impact, type Stage } from "../data";
+import { plants, sensors, advice, impact, img, type Stage } from "../data";
 
 const stageStyles: Record<Stage, string> = {
   "Mûr": "bg-leaf-soft text-leaf-dark",
@@ -21,20 +21,24 @@ export default function Home() {
 
   return (
     <div className="space-y-6">
-      {/* Bannière récolte */}
+      {/* Bannière récolte (photo réelle + dégradé) */}
       <Link
         to="/activites/recolte-en-famille"
-        className="block rounded-3xl bg-gradient-to-br from-leaf to-leaf-dark p-5 text-white shadow-[var(--shadow-card)] active:scale-[0.99] transition"
+        className="relative block overflow-hidden rounded-3xl shadow-[var(--shadow-card)] active:scale-[0.99] transition"
       >
-        <div className="flex items-center gap-2 text-sm font-bold opacity-90">
-          <Sparkles size={16} /> Bonne nouvelle
+        <img src={img.garden} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-leaf-dark/90 via-leaf-dark/70 to-leaf/50" />
+        <div className="relative p-5 text-white">
+          <div className="flex items-center gap-2 text-sm font-bold opacity-90">
+            <Sparkles size={16} /> Bonne nouvelle
+          </div>
+          <p className="mt-1 text-xl font-display font-semibold leading-snug">
+            {ready} plante{ready > 1 ? "s" : ""} prête{ready > 1 ? "s" : ""} à récolter
+          </p>
+          <p className="mt-1 text-sm text-white/85">
+            Lancez l'activité « La grande récolte » en famille →
+          </p>
         </div>
-        <p className="mt-1 text-xl font-display font-semibold leading-snug">
-          {ready} plante{ready > 1 ? "s" : ""} prête{ready > 1 ? "s" : ""} à récolter 🌿
-        </p>
-        <p className="mt-1 text-sm text-white/80">
-          Lancez l'activité « La grande récolte » en famille →
-        </p>
       </Link>
 
       {/* Potager actif */}
@@ -50,17 +54,21 @@ export default function Home() {
 
         <div className="grid grid-cols-2 gap-3">
           {plants.map((p) => (
-            <div key={p.id} className="card !p-3">
-              <div className="flex items-center justify-between">
-                <span className="text-3xl">{p.emoji}</span>
-                <span className={`pill ${stageStyles[p.stage]}`}>{p.stage}</span>
+            <div key={p.id} className="card !p-0 overflow-hidden">
+              <div className="relative h-24">
+                <img src={p.image} alt={p.name} loading="lazy" className="thumb h-full w-full" />
+                <span className={`pill absolute top-2 right-2 ${stageStyles[p.stage]} shadow-sm`}>
+                  {p.stage}
+                </span>
               </div>
-              <p className="mt-2 font-display font-semibold text-leaf-dark">{p.name}</p>
-              <div className="mt-2 h-2 rounded-full bg-leaf-dark/5 overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-leaf transition-all"
-                  style={{ width: `${p.progress}%` }}
-                />
+              <div className="p-3">
+                <p className="font-display font-semibold text-leaf-dark">{p.name}</p>
+                <div className="mt-2 h-2 rounded-full bg-leaf-dark/5 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-leaf transition-all"
+                    style={{ width: `${p.progress}%` }}
+                  />
+                </div>
               </div>
             </div>
           ))}

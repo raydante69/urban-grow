@@ -38,9 +38,7 @@ export default function Favorites() {
         <div className="space-y-3">
           {favorites.map((f) => (
             <Link key={f.id} to={f.to} className="card flex items-center gap-4 active:scale-[0.99] transition">
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-leaf-soft text-3xl">
-                {f.emoji}
-              </span>
+              <img src={f.image} alt={f.title} loading="lazy" className="thumb h-14 w-14 shrink-0 rounded-2xl" />
               <div className="flex-1 min-w-0">
                 <span className="pill bg-white text-muted shadow-[var(--shadow-soft)] !py-0.5">
                   {kindLabel[f.kind]}

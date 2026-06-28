@@ -24,7 +24,7 @@ export default function GamePlay() {
     <div className="space-y-5">
       <div className="flex items-center gap-3">
         <button
-          onClick={() => navigate("/jeux")}
+          onClick={() => navigate(-1)}
           className="grid h-10 w-10 place-items-center rounded-2xl bg-white text-leaf-dark shadow-[var(--shadow-soft)] active:scale-95 transition"
           aria-label="Retour"
         >

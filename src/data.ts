@@ -531,3 +531,227 @@ export const familyNav = [
   { to: "/contenu", label: "Contenu", icon: "BookOpen" },
   { to: "/communaute", label: "Famille", icon: "Users" },
 ];
+
+/* ================================================================== */
+/* ESPACE ENSEIGNANT                                                   */
+/* Suivi collectif + séances pédagogiques clé-en-main (valeur BtoB).   */
+/* ================================================================== */
+
+export const teacherNav = [
+  { to: "/enseignant", label: "Accueil", icon: "LayoutDashboard" },
+  { to: "/enseignant/classe", label: "Ma classe", icon: "Users" },
+  { to: "/enseignant/seances", label: "Séances", icon: "ClipboardList" },
+  { to: "/enseignant/ressources", label: "Ressources", icon: "FolderOpen" },
+  { to: "/enseignant/profil", label: "Classe", icon: "School" },
+];
+
+/* Informations de la classe (modifiables dans Profil / Classe) */
+export interface ClassInfo {
+  name: string;
+  school: string;
+  level: string;
+}
+export const defaultClassInfo: ClassInfo = {
+  name: "CE1 B",
+  school: "École Jean Jaurès",
+  level: "CE1",
+};
+
+/* Potager partagé de la classe + alertes techniques (tableau de bord) */
+export const classGarden = {
+  bacs: 4,
+  plantsActive: 10,
+  alerts: [
+    { id: "water", icon: "💧", tone: "warn" as const, title: "Réservoir bas (bac 3)", text: "Niveau d'eau à 28 %. À remplir avant la prochaine séance." },
+    { id: "light", icon: "💡", tone: "info" as const, title: "Lumière à vérifier (bac 1)", text: "Intensité plus faible que d'habitude. Vérifier la LED horticole." },
+  ],
+};
+
+/* Prochaine séance prévue (widget accueil) */
+export const nextSession = {
+  sessionId: "compter-graines",
+  title: "Compter les graines",
+  discipline: "Maths",
+  date: "Lundi 29 juin",
+  time: "10 h 30",
+};
+
+/* Élèves de la classe (suivi de progression, pas de notes) */
+export type StudentStatus = "en-retard" | "a-jour" | "avance";
+
+export interface Student {
+  id: string;
+  name: string;
+  avatar: string;
+  progress: number; // 0-100, avancement sur le programme
+  activitiesDone: number;
+  activitiesTotal: number;
+  badges: number;
+  status: StudentStatus;
+  scores: { quiz: number; memory: number; count: number; cycle: number }; // /100
+}
+
+export const seedStudents: Student[] = [
+  { id: "lea", name: "Léa M.", avatar: "👧", progress: 92, activitiesDone: 11, activitiesTotal: 12, badges: 5, status: "avance", scores: { quiz: 100, memory: 90, count: 95, cycle: 80 } },
+  { id: "noe", name: "Noé B.", avatar: "👦", progress: 74, activitiesDone: 9, activitiesTotal: 12, badges: 4, status: "a-jour", scores: { quiz: 80, memory: 70, count: 85, cycle: 60 } },
+  { id: "camille", name: "Camille D.", avatar: "🧒", progress: 68, activitiesDone: 8, activitiesTotal: 12, badges: 3, status: "a-jour", scores: { quiz: 60, memory: 80, count: 70, cycle: 60 } },
+  { id: "sofia", name: "Sofia R.", avatar: "👧🏽", progress: 88, activitiesDone: 10, activitiesTotal: 12, badges: 5, status: "avance", scores: { quiz: 90, memory: 85, count: 90, cycle: 90 } },
+  { id: "lucas", name: "Lucas P.", avatar: "👦🏾", progress: 41, activitiesDone: 5, activitiesTotal: 12, badges: 2, status: "en-retard", scores: { quiz: 50, memory: 40, count: 45, cycle: 30 } },
+  { id: "jade", name: "Jade L.", avatar: "👧🏻", progress: 63, activitiesDone: 8, activitiesTotal: 12, badges: 3, status: "a-jour", scores: { quiz: 70, memory: 65, count: 60, cycle: 55 } },
+  { id: "adam", name: "Adam K.", avatar: "🧒🏽", progress: 36, activitiesDone: 4, activitiesTotal: 12, badges: 1, status: "en-retard", scores: { quiz: 40, memory: 35, count: 50, cycle: 20 } },
+];
+
+/* Séances pédagogiques clé-en-main (objectifs programme déjà écrits) */
+export type Discipline = "SVT" | "Maths" | "Français";
+
+export interface Session {
+  id: string;
+  title: string;
+  emoji: string;
+  image: string;
+  discipline: Discipline;
+  level: string;
+  duration: string;
+  objective: string;
+  skills: string[];
+  linkedGameId?: string;
+  linkedActivityId?: string;
+  sheet: string; // nom de la fiche à télécharger
+  materials: string[];
+  steps: ActivityStep[];
+}
+
+export const sessions: Session[] = [
+  {
+    id: "compter-graines",
+    title: "Compter les graines",
+    emoji: "🔢",
+    image: img.potager,
+    discipline: "Maths",
+    level: "CP",
+    duration: "45 min",
+    objective: "Dénombrer une quantité de 1 à 10 et comparer deux collections de graines.",
+    skills: ["Dénombrement", "Comparaison de quantités", "Vocabulaire : plus / moins / autant"],
+    linkedGameId: "compte-graines",
+    sheet: "Fiche élève — Compter les graines (CP).pdf",
+    materials: ["Graines (haricots, pois)", "Tablettes ou TBI pour le jeu", "Fiche élève photocopiée"],
+    steps: [
+      { title: "Mise en situation (10 min)", text: "Manipulation : chaque élève compte de vraies graines déposées dans sa coupelle." },
+      { title: "Jeu sur tablette (15 min)", text: "Les élèves jouent à « Compte les graines » par binômes et valident leurs réponses." },
+      { title: "Fiche d'application (15 min)", text: "Distribuer la fiche : entourer le bon chiffre, comparer deux bacs." },
+      { title: "Mise en commun (5 min)", text: "Retour collectif au tableau sur les stratégies de comptage." },
+    ],
+  },
+  {
+    id: "cycle-de-vie",
+    title: "Du semis à la pousse",
+    emoji: "🌱",
+    image: img.nature,
+    discipline: "SVT",
+    level: "CE1",
+    duration: "1 h + suivi",
+    objective: "Identifier les grandes étapes du cycle de vie d'une plante et les besoins du vivant.",
+    skills: ["Cycle du vivant", "Observation scientifique", "Besoins d'une plante (eau, lumière)"],
+    linkedActivityId: "semis-premiers-pas",
+    sheet: "Fiche d'observation — Du semis à la pousse.pdf",
+    materials: ["Bac du potager de la classe", "Graines de basilic", "Carnet d'observation par élève"],
+    steps: [
+      { title: "Semis collectif (20 min)", text: "La classe sème ensemble et formule des hypothèses : que va-t-il se passer ?" },
+      { title: "Carnet d'observation", text: "Chaque semaine, les élèves dessinent et datent l'évolution de la pousse." },
+      { title: "Synthèse (20 min)", text: "Reconstituer la frise du cycle : graine → germination → plante → fleur → graine." },
+    ],
+  },
+  {
+    id: "quiz-besoins",
+    title: "Les besoins des plantes",
+    emoji: "🧠",
+    image: img.teaching,
+    discipline: "SVT",
+    level: "CE1 – CE2",
+    duration: "30 min",
+    objective: "Réinvestir et évaluer les connaissances sur ce dont une plante a besoin pour grandir.",
+    skills: ["Besoins du vivant", "Argumentation orale", "Réinvestissement"],
+    linkedGameId: "quiz-nature",
+    sheet: "Fiche bilan — Les besoins du vivant.pdf",
+    materials: ["TBI ou vidéoprojecteur", "Cartes réponses A/B/C"],
+    steps: [
+      { title: "Quiz collectif (15 min)", text: "Projeter « Quiz de la nature » : la classe vote, on justifie chaque réponse." },
+      { title: "Trace écrite (15 min)", text: "Compléter la fiche bilan avec les mots-clés : lumière, eau, racines, photosynthèse." },
+    ],
+  },
+  {
+    id: "mots-du-potager",
+    title: "L'imagier du potager",
+    emoji: "🔤",
+    image: img.coriandre,
+    discipline: "Français",
+    level: "CP",
+    duration: "40 min",
+    objective: "Enrichir le lexique du jardin et associer chaque mot à son image.",
+    skills: ["Lexique thématique", "Langage oral", "Correspondance mot / image"],
+    sheet: "Imagier du potager — à découper.pdf",
+    materials: ["Imagier photocopié", "Ciseaux, colle", "Étiquettes-mots"],
+    steps: [
+      { title: "Découverte (15 min)", text: "Nommer collectivement les plantes du potager de la classe." },
+      { title: "Atelier (20 min)", text: "Associer chaque étiquette-mot à la bonne image et coller dans le cahier." },
+      { title: "Restitution (5 min)", text: "Quelques élèves relisent leur imagier à voix haute." },
+    ],
+  },
+  {
+    id: "mesurer-croissance",
+    title: "Mesurer la croissance",
+    emoji: "📏",
+    image: img.garden,
+    discipline: "Maths",
+    level: "CE2",
+    duration: "45 min",
+    objective: "Mesurer une longueur en centimètres et représenter l'évolution sur un graphique simple.",
+    skills: ["Mesure de longueurs", "Grandeurs et données", "Lecture de graphique"],
+    sheet: "Carnet de pousse — relevés et graphique.pdf",
+    materials: ["Règles graduées", "Plantes du potager", "Carnet de pousse collectif"],
+    steps: [
+      { title: "Relevé (15 min)", text: "Par groupes, les élèves mesurent la hauteur de leur plante en cm." },
+      { title: "Report (20 min)", text: "Reporter la mesure dans le carnet et placer le point sur le graphique." },
+      { title: "Lecture (10 min)", text: "Observer la courbe : la plante a-t-elle poussé vite ? lentement ?" },
+    ],
+  },
+  {
+    id: "memory-plantes-classe",
+    title: "Memory des plantes",
+    emoji: "🃏",
+    image: img.menthe,
+    discipline: "SVT",
+    level: "GS – CP",
+    duration: "25 min",
+    objective: "Mémoriser et nommer les plantes aromatiques du potager.",
+    skills: ["Mémoire visuelle", "Lexique des plantes", "Coopération"],
+    linkedGameId: "memory-plantes",
+    sheet: "Cartes Memory — à imprimer.pdf",
+    materials: ["Jeu projeté ou cartes imprimées", "Plantes réelles pour comparaison"],
+    steps: [
+      { title: "Jeu en groupe (15 min)", text: "Les élèves jouent au Memory et nomment chaque plante trouvée." },
+      { title: "Prolongement (10 min)", text: "Retrouver les plantes du jeu dans le vrai potager de la classe." },
+    ],
+  },
+];
+
+/* Ressources pédagogiques (fiches imprimables, articles classe, programmes) */
+export type ResourceType = "Fiche" | "Article" | "Programme";
+
+export interface Resource {
+  id: string;
+  title: string;
+  type: ResourceType;
+  emoji: string;
+  description: string;
+  format: string; // ex. "PDF · A4", "Lien"
+}
+
+export const resources: Resource[] = [
+  { id: "fiche-observation", title: "Fiche d'observation hebdomadaire", type: "Fiche", emoji: "📋", description: "À photocopier : dessin de la pousse, date, mesure et météo de la semaine.", format: "PDF · A4" },
+  { id: "carnet-pousse", title: "Carnet de pousse collectif", type: "Fiche", emoji: "📒", description: "Carnet de la classe pour suivre chaque bac du semis à la récolte.", format: "PDF · 8 pages" },
+  { id: "imagier", title: "Imagier du potager", type: "Fiche", emoji: "🖼️", description: "Cartes mot/image des plantes et outils du jardin, à découper.", format: "PDF · A4" },
+  { id: "article-ecole", title: "Pourquoi un potager à l'école ?", type: "Article", emoji: "🏫", description: "Article court à projeter : les bénéfices pédagogiques du jardinage en classe.", format: "Lecture · 3 min" },
+  { id: "article-photosynthese", title: "La photosynthèse expliquée aux enfants", type: "Article", emoji: "☀️", description: "Une explication simple et imagée, adaptée au cycle 2.", format: "Lecture · 4 min" },
+  { id: "programme-c2", title: "Questionner le monde — cycle 2", type: "Programme", emoji: "🎯", description: "Repères de progression et compétences du programme couvertes par les séances.", format: "Référentiel" },
+];

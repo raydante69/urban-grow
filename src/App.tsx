@@ -1,19 +1,21 @@
 /**
- * UrbanGrow — Application mobile Famille
+ * UrbanGrow — Application mobile
  *
  * Flux : page de connexion -> selon le rôle (défini en interne, rattaché au
  * compte), l'utilisateur arrive sur l'app Famille (complète) ou sur l'espace
- * Enseignant (placeholder, à développer plus tard).
+ * Enseignant (tableau de bord classe, suivi des élèves, séances clé-en-main).
  */
 
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect, type ReactNode } from "react";
 import { AuthProvider, useAuth } from "./auth";
 import { FavoritesProvider } from "./store";
+import { TeacherProvider } from "./teacherStore";
 
 import Shell from "./components/Shell";
 import Login from "./pages/Login";
-import TeacherHome from "./pages/TeacherHome";
+
+// Famille
 import Home from "./pages/Home";
 import Activities from "./pages/Activities";
 import ActivityDetail from "./pages/ActivityDetail";
@@ -24,6 +26,16 @@ import ContentDetail from "./pages/ContentDetail";
 import Favorites from "./pages/Favorites";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
+
+// Enseignant
+import TeacherShell from "./components/TeacherShell";
+import Dashboard from "./pages/teacher/Dashboard";
+import ClassList from "./pages/teacher/ClassList";
+import StudentDetail from "./pages/teacher/StudentDetail";
+import Sessions from "./pages/teacher/Sessions";
+import SessionDetail from "./pages/teacher/SessionDetail";
+import Resources from "./pages/teacher/Resources";
+import ClassProfile from "./pages/teacher/ClassProfile";
 
 /** Remonte en haut de l'écran à chaque changement de page. */
 function ScrollTop() {
@@ -42,6 +54,14 @@ function FamilyOnly({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
 
+/** N'autorise que les enseignants connectés ; sinon redirige. */
+function TeacherOnly({ children }: { children: ReactNode }) {
+  const { user } = useAuth();
+  if (!user) return <Navigate to="/login" replace />;
+  if (user.role === "family") return <Navigate to="/" replace />;
+  return <>{children}</>;
+}
+
 function AppRoutes() {
   const { user } = useAuth();
 
@@ -54,16 +74,6 @@ function AppRoutes() {
           path="/login"
           element={
             user ? <Navigate to={user.role === "teacher" ? "/enseignant" : "/"} replace /> : <Login />
-          }
-        />
-
-        {/* Espace enseignant (placeholder) */}
-        <Route
-          path="/enseignant"
-          element={
-            !user ? <Navigate to="/login" replace />
-              : user.role === "teacher" ? <TeacherHome />
-              : <Navigate to="/" replace />
           }
         />
 
@@ -87,7 +97,27 @@ function AppRoutes() {
           <Route path="/profil" element={<Profile />} />
         </Route>
 
-        <Route path="*" element={<Navigate to={user ? "/" : "/login"} replace />} />
+        {/* Espace Enseignant — coquille + barre de navigation 5 onglets */}
+        <Route
+          element={
+            <TeacherOnly>
+              <TeacherShell />
+            </TeacherOnly>
+          }
+        >
+          <Route path="/enseignant" element={<Dashboard />} />
+          <Route path="/enseignant/classe" element={<ClassList />} />
+          <Route path="/enseignant/classe/:id" element={<StudentDetail />} />
+          <Route path="/enseignant/seances" element={<Sessions />} />
+          <Route path="/enseignant/seances/:id" element={<SessionDetail />} />
+          {/* Supports lancés en classe (réutilisent les jeux / activités) */}
+          <Route path="/enseignant/jeu/:id" element={<GamePlay />} />
+          <Route path="/enseignant/activite/:id" element={<ActivityDetail />} />
+          <Route path="/enseignant/ressources" element={<Resources />} />
+          <Route path="/enseignant/profil" element={<ClassProfile />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to={user ? (user.role === "teacher" ? "/enseignant" : "/") : "/login"} replace />} />
       </Routes>
     </>
   );
@@ -97,9 +127,11 @@ export default function App() {
   return (
     <AuthProvider>
       <FavoritesProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <TeacherProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </TeacherProvider>
       </FavoritesProvider>
     </AuthProvider>
   );
